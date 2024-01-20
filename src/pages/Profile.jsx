@@ -65,7 +65,7 @@ const Profile = ({ setProgress }) => {
 
   const formatTimeAgo = (timestamp) => {
     const currentDate = new Date();
-    const tweetDate = timestamp.toDate(); // Assuming timestamp is a Firestore timestamp
+    const tweetDate = timestamp?.toDate(); // Assuming timestamp is a Firestore timestamp
     return formatDistanceToNow(tweetDate, { addSuffix: true });
   };
 
