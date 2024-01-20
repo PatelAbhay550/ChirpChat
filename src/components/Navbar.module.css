@@ -1,0 +1,34 @@
+.main {
+  width: 100%;
+  height: 70px;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  z-index: 90;
+  position: fixed;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0px 36px;
+  display: flex;
+  background-color: #fff;
+  border-bottom: 2px solid #ccc;
+  align-items: center;
+  justify-content: space-between;
+  left: 0;
+  top: 0;
+}
+.main svg {
+  font-size: 1.52rem;
+}
+.main svg:first-child {
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  font-size: 1.89rem;
+  padding: 2px;
+}
+.img {
+  border-radius: 50%;
+  width: 40px;
+}
+.darkmode {
+  background-color: #333; /* Dark mode background color */
+  color: #fff; /* Dark mode text color */
+}

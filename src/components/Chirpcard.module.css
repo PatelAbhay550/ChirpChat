@@ -1,0 +1,88 @@
+.twittercard {
+  border: 1px solid #999;
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px 2px #56565610;
+  padding: 16px;
+  margin: 16px;
+  max-width: 400px;
+}
+
+.userinfo {
+  display: flex;
+  align-items: center;
+}
+
+.userimage {
+  width: 40px;
+  user-select: none;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+}
+.userimages {
+  all: unset;
+  width: 40px;
+
+  height: 40px;
+  margin-right: 2px;
+  object-fit: cover;
+}
+
+.userdetails {
+  flex-grow: 1;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.userhandle {
+  color: #555;
+}
+
+.chirptime {
+  color: #888;
+  font-size: 13px;
+  white-space: nowrap;
+  margin-top: -15px;
+}
+
+.chirpcontent {
+  margin-top: 8px;
+}
+.chirpimgcont {
+  position: relative;
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 8px;
+  background-color: lightgray;
+  padding-top: 66.67%; /* 3:2 aspect ratio */
+  overflow: hidden;
+}
+.chirpimage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+}
+
+.interactionicons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.interactionicon {
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+
+.icon {
+  margin-right: 4px;
+}
