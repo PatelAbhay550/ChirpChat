@@ -64,7 +64,11 @@ const ChirpCard = () => {
               </div>
             </div>
 
-            <div className={styles.chirpcontent}>{tweet.tweetText}</div>
+            <div className={styles.chirpcontent}>`${tweet.tweetText} ` {tweet.linkUrl && (
+    <a href={tweet.linkUrl} target="_blank" rel="noopener noreferrer">
+      {tweet.linkUrl}
+    </a>
+  )}</div>
             <div className={styles.chirpimgcont}>
               <img
                 src={tweet.imageSrc}
