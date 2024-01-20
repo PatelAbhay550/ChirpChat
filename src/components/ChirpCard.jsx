@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { FaUserNinja } from "react-icons/fa";
-import { formatDistanceToNow } from "date-fns"; // Import the date-fns function
+import { formatDistanceToNow } from "date-fns";
 import styles from "./Chirpcard.module.css";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
-
 import { Link } from "react-router-dom";
+
 const ChirpCard = () => {
   const [tweetData, setTweetData] = useState([]);
 
@@ -64,20 +63,28 @@ const ChirpCard = () => {
               </div>
             </div>
 
-            <div className={styles.chirpcontent}>`${tweet.tweetText} ` {tweet.linkUrl && (
-    <a href={tweet.linkUrl} target="_blank" rel="noopener noreferrer">
-      {tweet.linkUrl}
-    </a>
-  )}</div>
+            <div className={styles.chirpcontent}>{tweet.tweetText}</div>
             <div className={styles.chirpimgcont}>
-              <img
-                src={tweet.imageSrc}
-                alt="chirp img"
-                className={styles.chirpimage}
-                style={{ objectPosition: "top" }}
-                width={100}
-                height={100}
-              />
+              {tweet.imageSrc && (
+                <img
+                  src={tweet.imageSrc}
+                  alt="chirp img"
+                  className={styles.chirpimage}
+                  style={{ objectPosition: "top" }}
+                  width={100}
+                  height={100}
+                />
+              )}
+              {tweet.linkUrl && (
+                <a
+                  href={tweet.linkUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.link}
+                >
+                  {tweet.linkUrl}
+                </a>
+              )}
             </div>
 
             <div className={styles.interactionicons}>
