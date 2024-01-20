@@ -46,16 +46,27 @@ const Create = ({ setProgress }) => {
     try {
       const storageRef = ref(storage, "/tweetimgs/" + imageFile.name);
       await uploadBytes(storageRef, imageFile);
-
+const linkRegex = /(http[s]?:\/\/[^\s]+)/gi;
+    const linkMatch = tweetText.match(linkRegex);
       // Get the download URL of the uploaded image
       const imageUrl = await getDownloadURL(storageRef);
 
       const userEmail = auth.currentUser.email;
       const userName = userEmail.substring(0, userEmail.indexOf("@"));
       const tweetRef = doc(collection(db, "tweetdata"));
-
+if (linkMatch) { const tweetData= userId: auth.currentUser.uid,
+        linkUrl: linkMatch[0],
+        timestamp: serverTimestamp(),
+        username: auth.currentUser.displayName,
+        userhandle: userName,
+        userimg: auth.currentUser.photoURL,
+        tweetText,
+        imageSrc: imageUrl,
+        email: auth.currentUser.email,
+        id: tweetRef.id,}
       const tweetData = {
         userId: auth.currentUser.uid,
+        
         timestamp: serverTimestamp(),
         username: auth.currentUser.displayName,
         userhandle: userName,
