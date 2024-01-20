@@ -44,35 +44,31 @@ const Create = ({ setProgress }) => {
     e.preventDefault();
 
     try {
+      // Upload image to Firebase Storage
       const storageRef = ref(storage, "/tweetimgs/" + imageFile.name);
       await uploadBytes(storageRef, imageFile);
-const linkRegex = /(http[s]?:\/\/[^\s]+)/gi;
-    const linkMatch = tweetText.match(linkRegex);
+
       // Get the download URL of the uploaded image
       const imageUrl = await getDownloadURL(storageRef);
 
       const userEmail = auth.currentUser.email;
       const userName = userEmail.substring(0, userEmail.indexOf("@"));
       const tweetRef = doc(collection(db, "tweetdata"));
-if (linkMatch) { const tweetData= userId: auth.currentUser.uid,
-        linkUrl: linkMatch[0],
-        timestamp: serverTimestamp(),
-        username: auth.currentUser.displayName,
-        userhandle: userName,
-        userimg: auth.currentUser.photoURL,
-        tweetText,
-        imageSrc: imageUrl,
-        email: auth.currentUser.email,
-        id: tweetRef.id,}
+
+      // Regular expression to find the first link in tweetText
+      const linkRegex = /(http[s]?:\/\/[^\s]+)/gi;
+      const linkMatches = tweetText.match(linkRegex);
+      const linkUrl = linkMatches ? linkMatches[0] : null;
+
       const tweetData = {
         userId: auth.currentUser.uid,
-        
         timestamp: serverTimestamp(),
         username: auth.currentUser.displayName,
         userhandle: userName,
         userimg: auth.currentUser.photoURL,
         tweetText,
         imageSrc: imageUrl,
+        linkUrl, // Include the link in the tweet data
         email: auth.currentUser.email,
         id: tweetRef.id,
       };
@@ -93,6 +89,7 @@ if (linkMatch) { const tweetData= userId: auth.currentUser.uid,
 
   if (!auth?.currentUser) {
     navigate("/login");
+    return null; // Ensure the component does not render if the user is not authenticated
   }
 
   return (
