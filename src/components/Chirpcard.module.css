@@ -6,6 +6,11 @@
   margin: 16px;
   max-width: 400px;
 }
+.link {
+  color: blue; /* or any color you prefer */
+  text-decoration: underline; /* or any text-decoration you prefer */
+  cursor: pointer;
+}
 
 .userinfo {
   display: flex;
