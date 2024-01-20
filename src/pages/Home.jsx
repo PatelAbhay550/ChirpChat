@@ -28,7 +28,7 @@ const Home = ({ setProgress }) => {
           name="description"
           content="ChirpChat - Where conversations take flight! Engage in dynamic and real-time social messaging with ChirpChat. Join the community and let your thoughts soar"
         />
-        <meta name="keywords" content="Music, Audio, Lyrics" />
+        <meta name="keywords" content="Chirpchat,Social media" />
       </Helmet>
       <div className="nav ">
         <Navbar user={user} />
