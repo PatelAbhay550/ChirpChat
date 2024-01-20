@@ -21,9 +21,7 @@ const Home = ({ setProgress }) => {
       </div>
       <div className="cards mt-24">
         <ChirpCard />
-        <ChirpCard />
-        <ChirpCard />
-        <ChirpCard />
+
       </div>
       <Link to="/create">
         <div className="createbtn  fixed right-5 rounded-full bottom-8 w-16 h-16">
