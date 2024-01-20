@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { Helmet } from "react-helmet";
+
 import {
   doc,
   getDoc,
@@ -30,14 +32,14 @@ const Fulltweet = () => {
           setTweetData(tweetData);
 
           // Set title and OG tags dynamically
-          document.title =
-            "Tweet by " + tweetData.username + ": " + tweetData.tweetText;
-          const metaDescriptionTag = document.querySelector(
-            'meta[name="description"]'
-          );
-          if (metaDescriptionTag) {
-            metaDescriptionTag.setAttribute("content", tweetData.tweetText);
-          }
+          // document.title =
+          //   "Tweet by " + tweetData.username + ": " + tweetData.tweetText;
+          // const metaDescriptionTag = document.querySelector(
+          //   'meta[name="description"]'
+          // );
+          // if (metaDescriptionTag) {
+          //   metaDescriptionTag.setAttribute("content", tweetData.tweetText);
+          // }
         } else {
           console.error("Tweet not found");
           // Handle tweet not found case
@@ -58,6 +60,18 @@ const Fulltweet = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {`${tweetData?.username} on Chirpchat ${tweetData?.tweetText}`}
+        </title>
+        <meta content={`${tweetData?.imageSrc}`} property="og:image"></meta>
+        <meta name="description" content={`${tweetData?.tweetText}`} />
+        <meta
+          content={`${tweetData?.tweetText}`}
+          property="og:title"
+          data-rh="true"
+        />
+      </Helmet>
       <div className="nav pt-2 pl-2 w-full h-12">
         <Link to="/">
           <IoIosArrowRoundBack className="text-4xl" />
